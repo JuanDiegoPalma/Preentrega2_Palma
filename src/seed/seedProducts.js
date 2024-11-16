@@ -1,3 +1,6 @@
+import db from "../db/db.js";
+import { addDoc, collection } from "firebase/firestore";
+
 const products =[
     {
         id: "DT2324",
@@ -18,12 +21,30 @@ const products =[
         category: "Bmx-Completas"
     },
     {
+        id: "DT2326",
+        name: "BMX Kink Cloud 21.00 Matte",
+        description: "Perfecta para riders más altos que buscan un equilibrio entre estilo y rendimiento. Su cuadro ligero y duradero, junto con una geometría diseñada para el freestyle, permite realizar trucos y maniobras con facilidad.",
+        stock: 6,
+        price: 825,
+        image: "/img/Kink-Cloud-21.00-Matte.webp",
+        category: "Bmx-Completas"
+    },
+    {
         id: "FT1214",
         name: "Cubierta Odyssey 20 x 2.40",
         description: "Es una opción robusta y confiable para bicicletas BMX, diseñada para ofrecer un excelente agarre y durabilidad en diversos terrenos. Su ancho proporciona una mayor estabilidad y control, ideal para maniobras en el park o en la calle.",
         stock: 6,
         price: 30,
         image: "/img/cubierta-odyssey.webp",
+        category: "Bmx-Parts"
+    },
+    {
+        id: "FT1213",
+        name: "Horquilla Odyssey R25",
+        description: "Es una opción robusta y mítica para todos los riders. Su offset proporciona una mayor estabilidad y control, ideal para maniobras en el park o en la calle.",
+        stock: 6,
+        price: 50,
+        image: "/img/Horquilla_odyssey.webp",
         category: "Bmx-Parts"
     },
     {
@@ -54,6 +75,15 @@ const products =[
         category: "Skate"
     },
     {
+        id: "SK858",
+        name: "Tabla Element Out There Nick García",
+        description: "Es una patineta diseñada para ofrecer un rendimiento excepcional y durabilidad. Con una tabla de madera de alta calidad, presenta un diseño moderno y atractivo que destaca en cualquier entorno.",
+        stock: 7,
+        price: 65,
+        image: "/img/element-out-there.webp",
+        category: "Skate"
+    },
+    {
         id: "IN200",
         name: "Vans Slip-On Mn BMX Dakota Roche",
         description: "Son unas zapatillas icónicas que combinan estilo y funcionalidad, diseñadas especialmente para los amantes del BMX. Con una parte superior de lona resistente y un diseño sin cordones, ofrecen una comodidad excepcional y un ajuste seguro. La suela de goma con el famoso patrón de waffle proporciona un excelente agarre en los pedales, mientras que su estética llamativa refleja la personalidad del rider.",
@@ -67,18 +97,29 @@ const products =[
         name: "Remera Vans X Dan Lacey Off Black",
         description: "Es una prenda que fusiona estilo y comodidad, perfecta para los amantes del BMX y la cultura urbana. Con un diseño minimalista en un tono negro clásico, cuenta con gráficos únicos que rinden homenaje al famoso rider Dan Lacey.",
         stock: 10,
-        price: 30,
+        price: 25,
         image: "/img/vans-dan-lacey.webp",
         category: "Indumentaria"
     },
+    {
+        id: "IN500",
+        name: "Zapatillas Vans X ",
+        description: " están diseñadas para ofrecer un excelente rendimiento y confort en la práctica del BMX. Generalmente, cuentan con una suela de goma resistente con el característico sello Waffle de Vans, que proporciona un agarre superior en los pedales. .",
+        stock: 10,
+        price: 55,
+        image: "/img/vans-bmx.webp",
+        category: "Indumentaria"
+    }
 ]
 
-const getProducts = ( ) => {
-    return new Promise((resolve, reject) => {
-        setTimeout (() => {
-            resolve(products)
-        }, 1500) 
+const seedProducts = () => {
+    const productsRef = collection(db, "products")
+    products.map(( { id, ...dataProduct } )=> {
+        addDoc(productsRef, dataProduct)
     })
-}
 
-export { getProducts }
+
+    console.log("productos subidos")
+    return
+}
+seedProducts()

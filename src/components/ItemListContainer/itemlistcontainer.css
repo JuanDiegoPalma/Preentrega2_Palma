@@ -1,6 +1,6 @@
 .item-list-container{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 10px;
 }
 
@@ -16,3 +16,18 @@
     margin: 1rem;
 }
 
+.saludo{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.details{
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 12px;
+    font-style: oblique;
+    color: greenyellow;
+    background-color: gray;
+    border: 2px solid black;
+    
+}

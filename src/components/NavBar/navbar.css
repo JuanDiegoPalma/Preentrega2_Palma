@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-around;
     cursor: pointer;
+    color: black;
 }
 
 ul{
@@ -24,13 +25,26 @@ ul{
         cursor: pointer;
     }
 }
-.carrito{
+.icon-cart{
+    width: 41px;
     cursor: pointer;
 }
+
+.empty-cart{
+    width: 30px;
+    cursor: default;
+}
+
 
 .numcart{
     display: flex;
     justify-content: right;
 }
 
+:link{
+    text-decoration: none;
+}
 
+a{
+    color: black;
+}
