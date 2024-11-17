@@ -13,6 +13,9 @@ return (
             <label>Email</label>
             <input type="email" name="email" value={dataForm.email} onChange={handleChangeInput} />
 
+            <label>Repita su email</label>
+            <input type="email" name="repetirEmail" value={dataForm.email} onChange={handleChangeInput} />
+
             <button type="submit">Enviar mi orden</button>
 
         </form>
